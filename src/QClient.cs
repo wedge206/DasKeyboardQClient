@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Net.Http;
-    using System.Net.Http.Headers;
     using System.Text;
     using System.Threading.Tasks;
     using Wedge.DasKeyboardQClient.DataContracts;
@@ -19,15 +18,10 @@
             Url = $"{hostPath}/{ApiPath}";
         }
 
-        protected async Task<HttpResponseMessage> HttpGetAsync(string path, string accessToken = null)
+        protected async Task<HttpResponseMessage> HttpGetAsync(string path, HttpMessageHandler tokenHandler = null)
         {
-            using (var client = new HttpClient())
+            using (var client = tokenHandler == null ? new HttpClient() : new HttpClient(tokenHandler))
             {
-                if (accessToken != null)
-                {
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                }
-
                 var result = await client.GetAsync($"{Url}/{path}");
                 result.EnsureSuccessStatusCode();
 
@@ -35,23 +29,18 @@
             }
         }
 
-        protected async Task<T> HttpGetAsync<T>(string path, string accessToken = null)
+        protected async Task<T> HttpGetAsync<T>(string path, HttpMessageHandler tokenHandler = null)
         {
-            var result = await HttpGetAsync(path, accessToken);
+            var result = await HttpGetAsync(path, tokenHandler);
             var content = await result.Content.ReadAsStringAsync();
 
             return content.ParseJSON<T>();
         }
 
-        protected async Task<HttpResponseMessage> HttpPostAsync(string path, string postContent, string accessToken = null)
+        protected async Task<HttpResponseMessage> HttpPostAsync(string path, string postContent, HttpMessageHandler tokenHandler = null)
         {
-            using (var client = new HttpClient())
+            using (var client = tokenHandler == null ? new HttpClient() : new HttpClient(tokenHandler))
             {
-                if (accessToken != null)
-                {
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                }
-
                 var result = await client.PostAsync($"{Url}/{path}", new StringContent(postContent, Encoding.UTF8, "application/json"));
                 result.EnsureSuccessStatusCode();
 
@@ -59,23 +48,18 @@
             }
         }
 
-        protected async Task<T> HttpPostAsync<T>(string path, string postContent, string accessToken = null)
+        protected async Task<T> HttpPostAsync<T>(string path, string postContent, HttpMessageHandler tokenHandler = null)
         {
-            var result = await HttpPostAsync(path, postContent, accessToken);
+            var result = await HttpPostAsync(path, postContent, tokenHandler);
             var content = await result.Content.ReadAsStringAsync();
 
             return content.ParseJSON<T>();
         }
 
-        protected async Task<HttpResponseMessage> HttpPatchAsync(string path, string patchContent, string accessToken = null)
+        protected async Task<HttpResponseMessage> HttpPatchAsync(string path, string patchContent, HttpMessageHandler tokenHandler = null)
         {
-            using (var client = new HttpClient())
+            using (var client = tokenHandler == null ? new HttpClient() : new HttpClient(tokenHandler))
             {
-                if (accessToken != null)
-                {
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                }
-
                 var result = await client.PatchAsync($"{Url}/{path}", new StringContent(patchContent, Encoding.UTF8, "application/json"));
                 result.EnsureSuccessStatusCode();
 
@@ -83,23 +67,18 @@
             }
         }
 
-        protected async Task<T> HttpPatchAsync<T>(string path, string patchContent, string accessToken = null)
+        protected async Task<T> HttpPatchAsync<T>(string path, string patchContent, HttpMessageHandler tokenHandler = null)
         {
-            var result = await HttpPatchAsync(path, patchContent, accessToken);
+            var result = await HttpPatchAsync(path, patchContent, tokenHandler);
             var content = await result.Content.ReadAsStringAsync();
 
             return content.ParseJSON<T>();
         }
 
-        protected async Task<HttpResponseMessage> HttpPutAsync(string path, string putContent, string accessToken = null)
+        protected async Task<HttpResponseMessage> HttpPutAsync(string path, string putContent, HttpMessageHandler tokenHandler = null)
         {
-            using (var client = new HttpClient())
+            using (var client = tokenHandler == null ? new HttpClient() : new HttpClient(tokenHandler))
             {
-                if (accessToken != null)
-                {
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                }
-
                 var result = await client.PutAsync($"{Url}/{path}", new StringContent(putContent, Encoding.UTF8, "application/json"));
                 result.EnsureSuccessStatusCode();
 
@@ -107,23 +86,18 @@
             }
         }
 
-        protected async Task<T> HttpPutAsync<T>(string path, string putContent, string accessToken = null)
+        protected async Task<T> HttpPutAsync<T>(string path, string putContent, HttpMessageHandler tokenHandler = null)
         {
-            var result = await HttpPutAsync(path, putContent, accessToken);
+            var result = await HttpPutAsync(path, putContent, tokenHandler);
             var content = await result.Content.ReadAsStringAsync();
 
             return content.ParseJSON<T>();
         }
 
-        protected async Task<HttpResponseMessage> HttpDeleteAsync(string path, string accessToken = null)
+        protected async Task<HttpResponseMessage> HttpDeleteAsync(string path, HttpMessageHandler tokenHandler = null)
         {
-            using (var client = new HttpClient())
+            using (var client = tokenHandler == null ? new HttpClient() : new HttpClient(tokenHandler))
             {
-                if (accessToken != null)
-                {
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                }
-
                 var result = await client.DeleteAsync($"{Url}/{path}");
                 result.EnsureSuccessStatusCode();
 
@@ -131,9 +105,9 @@
             }
         }
 
-        protected async Task<T> HttpDeleteAsync<T>(string path, string accessToken = null)
+        protected async Task<T> HttpDeleteAsync<T>(string path, HttpMessageHandler tokenHandler = null)
         {
-            var result = await HttpDeleteAsync(path, accessToken);
+            var result = await HttpDeleteAsync(path, tokenHandler);
             var content = await result.Content.ReadAsStringAsync();
 
             return content.ParseJSON<T>();
