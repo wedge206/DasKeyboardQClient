@@ -1,5 +1,6 @@
 # DasKeyboard QClient.NET
 ![Build status](https://img.shields.io/appveyor/ci/wedge206/daskeyboardqclient.svg)
+[![NuGet](https://img.shields.io/nuget/v/DasKeyboardQClient.svg)](https://www.nuget.org/packages/DasKeyboardQClient)
 
 .Net Framework Client for DasKeyboard Q API
 Simple, lightweight, and easy to use.
