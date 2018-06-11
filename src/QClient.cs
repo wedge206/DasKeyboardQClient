@@ -1,11 +1,9 @@
 ﻿namespace Wedge.DasKeyboardQClient
 {
     using System;
-    using System.Collections.Generic;
     using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
-    using Wedge.DasKeyboardQClient.DataContracts;
 
     public abstract class QClient : IQClient
     {

@@ -25,7 +25,6 @@ namespace SampleApp
             var cloudClient = new CloudQClient("CLIENTID", "SECRET");
             cloudClient.CreateSignalAsync(sig);
 
-            
             Console.ReadKey();
         }
     }

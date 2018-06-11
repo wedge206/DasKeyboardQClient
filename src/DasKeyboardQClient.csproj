@@ -29,6 +29,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>SigningKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="IdentityModel, Version=3.6.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\IdentityModel.3.6.1\lib\net461\IdentityModel.dll</HintPath>
@@ -83,6 +89,8 @@
     <Compile Include="DataContracts\Effect.cs" />
     <Compile Include="DataContracts\Signal.cs" />
     <Compile Include="DataContracts\Zone.cs" />
+    <Compile Include="ICloudQClient.cs" />
+    <Compile Include="ILocalQClient.cs" />
     <Compile Include="Utilities\Extensions.cs" />
     <Compile Include="IQClient.cs" />
     <Compile Include="LocalQClient.cs" />
@@ -91,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="SigningKey.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

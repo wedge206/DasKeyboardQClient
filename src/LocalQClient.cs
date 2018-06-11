@@ -4,7 +4,7 @@
     using System.Threading.Tasks;
     using Wedge.DasKeyboardQClient.DataContracts;
 
-    public class LocalQClient : QClient
+    public class LocalQClient : QClient, ILocalQClient
     {
         private const string DefaultHostName = "localhost";
         private const int DefaultLocalPort = 27301;
@@ -34,6 +34,11 @@
         {
         }
 
+        /// <summary>
+        /// Creates a new signal
+        /// </summary>
+        /// <param name="signal">Signal to be Created</param>
+        /// <returns>Async Task</returns>
         public async Task CreateSignalAsync(Signal signal)
         {
             await HttpPostAsync("api/1.0/signals", signal.ToJSON());
