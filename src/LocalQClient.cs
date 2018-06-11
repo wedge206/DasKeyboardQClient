@@ -12,7 +12,7 @@
         /// <summary>
         /// Creates a QClient on localhost using the default port
         /// </summary>
-        public LocalQClient() : this (DefaultLocalPort)
+        public LocalQClient() : this(DefaultLocalPort)
         {
         }
 
@@ -34,7 +34,7 @@
         {
         }
 
-        public async override Task CreateSignalAsync(Signal signal)
+        public async Task CreateSignalAsync(Signal signal)
         {
             await HttpPostAsync("api/1.0/signals", signal.ToJSON());
         }

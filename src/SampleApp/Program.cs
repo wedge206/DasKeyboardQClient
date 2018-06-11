@@ -8,8 +8,6 @@ namespace SampleApp
     {
         static void Main(string[] args)
         {
-            var client = new CloudQClient("CLIENTID", "SECRET");
-
             var sig = new Signal()
             {
                 Name = "Serialized Signal",
@@ -19,8 +17,15 @@ namespace SampleApp
                 Effect = "BLINK"
             };
 
-            client.CreateSignalAsync(sig).Wait();
+            // Local Client:
+            var localClient = new LocalQClient();
+            localClient.CreateSignalAsync(sig);
 
+            // Cloud Client:
+            var cloudClient = new CloudQClient("CLIENTID", "SECRET");
+            cloudClient.CreateSignalAsync(sig);
+
+            
             Console.ReadKey();
         }
     }
