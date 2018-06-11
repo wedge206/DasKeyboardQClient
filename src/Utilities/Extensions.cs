@@ -1,13 +1,9 @@
 ﻿namespace Wedge.DasKeyboardQClient
 {
     using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
     using System.Net.Http;
-    using System.Runtime.Serialization.Json;
-    using System.Text;
     using System.Threading.Tasks;
+    using Newtonsoft.Json;
 
     public static class Extensions
     {
@@ -18,11 +14,7 @@
                 return default(T);
             }
 
-            var JsonDeserializer = new DataContractJsonSerializer(typeof(T));
-            using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))
-            {
-                return (T)JsonDeserializer.ReadObject(stream);
-            }
+            return JsonConvert.DeserializeObject<T>(jsonString);
         }
 
         public static bool TryParseJSON<T>(this string jsonString, out T obj)
@@ -41,13 +33,7 @@
 
         public static string ToJSON(this object obj)
         {
-            var JsonSerializer = new DataContractJsonSerializer(obj.GetType());
-            using (MemoryStream stream = new MemoryStream())
-            {
-                JsonSerializer.WriteObject(stream, obj);
-
-                return Encoding.UTF8.GetString(stream.ToArray());
-            }
+            return JsonConvert.SerializeObject(obj);
         }
 
         public static async Task<HttpResponseMessage> PatchAsync(this HttpClient client, string requestUri, HttpContent content)
