@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using IdentityModel;
     using IdentityModel.Client;
     using Wedge.DasKeyboardQClient.DataContracts;
 
@@ -145,6 +146,16 @@
             // TODO: auto-detect multiple pages and retrieve/return complete result set
             // TODO: implement sort parameters
             return await HttpGetAsync<List<Signal>>($"signals{(afterTime.HasValue ? $"/after/{afterTime.ToString()}" : String.Empty)}", TokenHandler);
+        }
+
+        /// <summary>
+        /// Get a list of Signals on a device
+        /// </summary>
+        /// <param name="afterTime">Returns Signals after this date</param>
+        /// <returns>List of Signals</returns>
+        public async Task<List<Signal>> GetSignalsAsync(DateTime afterTime)
+        {
+            return await GetSignalsAsync(afterTime.ToEpochTime());
         }
 
         /// <summary>

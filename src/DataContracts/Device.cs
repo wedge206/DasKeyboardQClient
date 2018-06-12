@@ -2,54 +2,54 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Q Enabled Device
     /// </summary>
-    [DataContract]
+    [JsonObject]
     public class Device
     {
         /// <summary>
         /// Unique Id of the Device
         /// </summary>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
         /// <summary>
         /// UserId that owns the Device
         /// </summary>
-        [DataMember(Name = "userId", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "userId")]
         public string UserId { get; set; }
 
         /// <summary>
         /// Product Id of the Device
         /// </summary>
-        [DataMember(Name = "pid", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "pid")]
         public string Pid { get; set; }
 
         /// <summary>
         /// Firmware version of the Device
         /// </summary>
-        [DataMember(Name = "firmwareVersion", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "firmwareVersion")]
         public string FirmwareVersion { get; set; }
 
         /// <summary>
         /// VID of the Device
         /// </summary>
-        [DataMember(Name = "vid", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "vid")]
         public string Vid { get; set; }
 
         /// <summary>
         /// Description of the Device
         /// </summary>
-        [DataMember(Name = "description", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
         /// <summary>
         /// Zones on the Devices
         /// </summary>
-        [DataMember(Name = "zones", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "zones")]
         public List<Zone> Zones { get; set; }
     }
 }

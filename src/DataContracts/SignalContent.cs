@@ -2,66 +2,68 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Signal Content
     /// </summary>
-    [DataContract]
+    [JsonObject]
     public class SignalContent
     {
         /// <summary>
         /// Content
         /// </summary>
-        [DataMember(Name = "content", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "content")]
         public List<Signal> Content { get; set; }
 
         /// <summary>
         /// Size
         /// </summary>
-        [DataMember(Name = "size", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "size")]
         public int Size { get; set; }
 
         /// <summary>
         /// Sort
         /// </summary>
-        [DataMember(Name = "sort", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "sort")]
         public string Sort { get; set; }
 
         /// <summary>
         /// Created At Time
         /// </summary>
-        [DataMember(Name = "createdAt", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "createdAt")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
         /// Zone Id
         /// </summary>
-        [DataMember(Name = "zoneId", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "zoneId")]
         public string ZoneId { get; set; }
 
         /// <summary>
         /// Has Next Page?
         /// </summary>
-        [DataMember(Name = "hasNextPage", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "hasNextPage")]
         public bool HasNextPage { get; set; }
 
         /// <summary>
         /// Page
         /// </summary>
-        [DataMember(Name = "page", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "page")]
         public int Page { get; set; }
 
         /// <summary>
         /// Total Elements
         /// </summary>
-        [DataMember(Name = "totalElements", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "totalElements")]
         public int TotalElements { get; set; }
 
         /// <summary>
         /// Total Pages
         /// </summary>
-        [DataMember(Name = "totalPages", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "totalPages")]
         public int TotalPages { get; set; }
     }
 }

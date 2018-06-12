@@ -1,114 +1,118 @@
 ﻿namespace Wedge.DasKeyboardQClient.DataContracts
 {
     using System;
-    using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Signal Class
     /// </summary>
-    [DataContract]
+    [JsonObject]
     public class Signal
     {
         /// <summary>
         /// Unique Id of the Signal
         /// </summary>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
         /// <summary>
         /// UserId for the Signal
         /// </summary>
-        [DataMember(Name = "userId", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "userId")]
         public string UserId { get; set; }
 
         /// <summary>
         /// Product Id
         /// </summary>
-        [DataMember(Name = "pid", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "pid")]
         public string Pid { get; set; }
 
         /// <summary>
         /// Zone Id
         /// </summary>
-        [DataMember(Name = "zoneId", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "zoneId")]
         public string ZoneId { get; set; }
 
         /// <summary>
         /// Name of the Signal
         /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Color
         /// </summary>
-        [DataMember(Name = "color", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "color")]
         public string Color { get; set; }
 
         /// <summary>
         /// Effect
         /// </summary>
-        [DataMember(Name = "effect", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "effect")]
         public string Effect { get; set; }
 
         /// <summary>
         /// Action
         /// </summary>
-        [DataMember(Name = "action", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "action")]
         public string Action { get; set; }
 
         /// <summary>
         /// Is Read?
         /// </summary>
-        [DataMember(Name = "isread", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "isread")]
         public bool IsRead { get; set; }
 
         /// <summary>
         /// Is Muted?
         /// </summary>
-        [DataMember(Name = "ismuted", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "ismuted")]
         public bool IsMuted { get; set; }
 
         /// <summary>
         /// Is Archived?
         /// </summary>
-        [DataMember(Name = "isArchived", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "isArchived")]
         public bool IsArchived { get; set; }
 
         /// <summary>
         /// Should Notify?
         /// </summary>
-        [DataMember(Name = "shouldNotify", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "shouldNotify")]
         public bool ShouldNotify { get; set; }
 
         /// <summary>
         /// Client Name
         /// </summary>
-        [DataMember(Name = "clientName", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "clientName")]
         public string ClientName { get; set; }
 
         /// <summary>
         /// Message
         /// </summary>
-        [DataMember(Name = "message", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "message")]
         public string Message { get; set; }
 
         /// <summary>
         /// Read At Time
         /// </summary>
-        [DataMember(Name = "readAt", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "readAt")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime ReadAt { get; set; }
 
         /// <summary>
         /// Created at Time
         /// </summary>
-        [DataMember(Name = "createdAt", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "createdAt")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
         /// Updated At Time
         /// </summary>
-        [DataMember(Name = "updatedAt", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "updatedAt")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime UpdatedAt { get; set; }
     }
 }

@@ -1,24 +1,24 @@
 ﻿namespace Wedge.DasKeyboardQClient.DataContracts
 {
     using System;
-    using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Effect that can be applied to a Zone
     /// </summary>
-    [DataContract]
+    [JsonObject]
     public class Effect
     {
         /// <summary>
         /// Effect Code
         /// </summary>
-        [DataMember(Name = "code", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "code")]
         public string Code { get; set; }
 
         /// <summary>
         /// Effect Name
         /// </summary>
-        [DataMember(Name = "label", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "label")]
         public string Label { get; set; }
     }
 }

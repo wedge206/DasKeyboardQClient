@@ -2,48 +2,48 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Device Definition
     /// </summary>
-    [DataContract]
+    [JsonObject]
     public class DeviceDefinition
     {
         /// <summary>
         /// Name of the Device Definition
         /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
         /// VID of the Device Definition
         /// </summary>
-        [DataMember(Name = "vid", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "vid")]
         public string Vid { get; set; }
 
         /// <summary>
         /// Product Id of the Device Definition
         /// </summary>
-        [DataMember(Name = "pid", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "pid")]
         public string Pid { get; set; }
 
         /// <summary>
         /// Model Number of the Device Definition
         /// </summary>
-        [DataMember(Name = "modelNumber", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "modelNumber")]
         public string ModelNumber { get; set; }
 
         /// <summary>
         /// Device Definition Description
         /// </summary>
-        [DataMember(Name = "description", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
         /// <summary>
         /// Zones for the Device Definition
         /// </summary>
-        [DataMember(Name = "zones", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "zones")]
         public List<Zone> Zones { get; set; }
     }
 }

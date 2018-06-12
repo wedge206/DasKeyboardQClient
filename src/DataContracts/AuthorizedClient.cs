@@ -1,18 +1,18 @@
 ﻿namespace Wedge.DasKeyboardQClient.DataContracts
 {
     using System;
-    using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// AuthorizedClient for API Access
     /// </summary>
-    [DataContract]
+    [JsonObject]
     public class AuthorizedClient
     {
         /// <summary>
         /// Name of the Authorized Client
         /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
     }
 }
