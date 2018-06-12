@@ -6,6 +6,9 @@
     using IdentityModel.Client;
     using Wedge.DasKeyboardQClient.DataContracts;
 
+    /// <summary>
+    /// Cloud Q API Client
+    /// </summary>
     public class CloudQClient : QClient, ICloudQClient
     {
         private const string CloudHost = "q.daskeyboard.com";
@@ -15,6 +18,9 @@
 
         private AccessTokenHandler tokenHandler;
 
+        /// <summary>
+        /// Token Handler object.  Use when running custom requests.
+        /// </summary>
         public AccessTokenHandler TokenHandler
         {
             get
@@ -185,7 +191,11 @@
 
         private bool disposedValue = false; // To detect redundant calls
 
-        protected virtual void Dispose(bool disposing)
+        /// <summary>
+        /// Dispose this object
+        /// </summary>
+        /// <param name="disposing">Prevents duplicate Dispose calls</param>
+        protected override void Dispose(bool disposing)
         {
             if (!disposedValue)
             {

@@ -4,6 +4,9 @@
     using System.Threading.Tasks;
     using Wedge.DasKeyboardQClient.DataContracts;
 
+    /// <summary>
+    /// Local QClient Class
+    /// </summary>
     public class LocalQClient : QClient, ILocalQClient
     {
         private const string DefaultHostName = "localhost";
