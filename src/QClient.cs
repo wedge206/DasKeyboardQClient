@@ -5,7 +5,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public abstract class QClient : IQClient
+    public abstract class QClient : IQClient, IDisposable
     {
         private const string ApiPath = "api/1.0";
 
@@ -109,6 +109,27 @@
             var content = await result.Content.ReadAsStringAsync();
 
             return content.ParseJSON<T>();
+        }
+
+
+        private bool disposedValue = false;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: dispose managed state (managed objects).
+                }
+
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
         }
     }
 }

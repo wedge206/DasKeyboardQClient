@@ -182,5 +182,22 @@
         {
             return await HttpGetAsync<List<Signal>>($"signals/shadows/{pid}", TokenHandler);
         }
+
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    tokenHandler.Dispose();
+                }
+
+                disposedValue = true;
+
+                base.Dispose();
+            }
+        }
     }
 }
