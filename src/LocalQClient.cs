@@ -41,7 +41,7 @@
         /// <returns>Async Task</returns>
         public async Task CreateSignalAsync(Signal signal)
         {
-            await HttpPostAsync("api/1.0/signals", signal.ToJSON());
+            await HttpPostAsync("signals", signal.ToJSON());
         }
     }
 }
