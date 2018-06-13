@@ -32,7 +32,7 @@
         /// <param name="path">Path of the request</param>
         /// <param name="tokenHandler">(Optional) Authentication Token Handler</param>
         /// <returns>Async Task</returns>
-        protected async Task<HttpResponseMessage> HttpGetAsync(string path, HttpMessageHandler tokenHandler = null)
+        public async Task<HttpResponseMessage> HttpGetAsync(string path, HttpMessageHandler tokenHandler = null)
         {
             using (var client = tokenHandler == null ? new HttpClient() : new HttpClient(tokenHandler))
             {
@@ -50,7 +50,7 @@
         /// <param name="path">Path of the Request</param>
         /// <param name="tokenHandler">(Optional) Authentication Token handler</param>
         /// <returns></returns>
-        protected async Task<T> HttpGetAsync<T>(string path, HttpMessageHandler tokenHandler = null)
+        public async Task<T> HttpGetAsync<T>(string path, HttpMessageHandler tokenHandler = null)
         {
             var result = await HttpGetAsync(path, tokenHandler);
             var content = await result.Content.ReadAsStringAsync();
@@ -65,7 +65,7 @@
         /// <param name="postContent">Content of the POST body</param>
         /// <param name="tokenHandler">(Optional) Authentication Token Handler</param>
         /// <returns>Async Task</returns>
-        protected async Task<HttpResponseMessage> HttpPostAsync(string path, string postContent, HttpMessageHandler tokenHandler = null)
+        public async Task<HttpResponseMessage> HttpPostAsync(string path, string postContent, HttpMessageHandler tokenHandler = null)
         {
             using (var client = tokenHandler == null ? new HttpClient() : new HttpClient(tokenHandler))
             {
@@ -84,7 +84,7 @@
         /// <param name="postContent">Content of the POST body</param>
         /// <param name="tokenHandler">(Optional) Authentication Token Handler</param>
         /// <returns></returns>
-        protected async Task<T> HttpPostAsync<T>(string path, string postContent, HttpMessageHandler tokenHandler = null)
+        public async Task<T> HttpPostAsync<T>(string path, string postContent, HttpMessageHandler tokenHandler = null)
         {
             var result = await HttpPostAsync(path, postContent, tokenHandler);
             var content = await result.Content.ReadAsStringAsync();
@@ -99,7 +99,7 @@
         /// <param name="patchContent">Content of the PATCH body</param>
         /// <param name="tokenHandler">(Optional) Authentication Token Handler</param>
         /// <returns></returns>
-        protected async Task<HttpResponseMessage> HttpPatchAsync(string path, string patchContent, HttpMessageHandler tokenHandler = null)
+        public async Task<HttpResponseMessage> HttpPatchAsync(string path, string patchContent, HttpMessageHandler tokenHandler = null)
         {
             using (var client = tokenHandler == null ? new HttpClient() : new HttpClient(tokenHandler))
             {
@@ -118,7 +118,7 @@
         /// <param name="patchContent">Content of the PATCH body</param>
         /// <param name="tokenHandler">(Optional) Authentication Token Handler</param>
         /// <returns></returns>
-        protected async Task<T> HttpPatchAsync<T>(string path, string patchContent, HttpMessageHandler tokenHandler = null)
+        public async Task<T> HttpPatchAsync<T>(string path, string patchContent, HttpMessageHandler tokenHandler = null)
         {
             var result = await HttpPatchAsync(path, patchContent, tokenHandler);
             var content = await result.Content.ReadAsStringAsync();
@@ -133,7 +133,7 @@
         /// <param name="putContent">Content of the PUT body</param>
         /// <param name="tokenHandler">(Optional) Authentication Token Handler</param>
         /// <returns></returns>
-        protected async Task<HttpResponseMessage> HttpPutAsync(string path, string putContent, HttpMessageHandler tokenHandler = null)
+        public async Task<HttpResponseMessage> HttpPutAsync(string path, string putContent, HttpMessageHandler tokenHandler = null)
         {
             using (var client = tokenHandler == null ? new HttpClient() : new HttpClient(tokenHandler))
             {
@@ -152,7 +152,7 @@
         /// <param name="putContent">Content of the PUT body</param>
         /// <param name="tokenHandler">(Optional) Authentication Token Handler</param>
         /// <returns></returns>
-        protected async Task<T> HttpPutAsync<T>(string path, string putContent, HttpMessageHandler tokenHandler = null)
+        public async Task<T> HttpPutAsync<T>(string path, string putContent, HttpMessageHandler tokenHandler = null)
         {
             var result = await HttpPutAsync(path, putContent, tokenHandler);
             var content = await result.Content.ReadAsStringAsync();
@@ -166,7 +166,7 @@
         /// <param name="path">Path of the Request</param>
         /// <param name="tokenHandler">Authentication Token Handler</param>
         /// <returns>Async Task</returns>
-        protected async Task<HttpResponseMessage> HttpDeleteAsync(string path, HttpMessageHandler tokenHandler = null)
+        public async Task<HttpResponseMessage> HttpDeleteAsync(string path, HttpMessageHandler tokenHandler = null)
         {
             using (var client = tokenHandler == null ? new HttpClient() : new HttpClient(tokenHandler))
             {
@@ -184,7 +184,7 @@
         /// <param name="path">Path of the Request</param>
         /// <param name="tokenHandler">Authentication Token Handler</param>
         /// <returns>Object of type T</returns>
-        protected async Task<T> HttpDeleteAsync<T>(string path, HttpMessageHandler tokenHandler = null)
+        public async Task<T> HttpDeleteAsync<T>(string path, HttpMessageHandler tokenHandler = null)
         {
             var result = await HttpDeleteAsync(path, tokenHandler);
             var content = await result.Content.ReadAsStringAsync();

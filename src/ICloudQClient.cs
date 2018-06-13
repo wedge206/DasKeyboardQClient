@@ -5,7 +5,10 @@
     using System.Threading.Tasks;
     using Wedge.DasKeyboardQClient.DataContracts;
 
-    interface ICloudQClient
+    /// <summary>
+    /// ICloudQClient
+    /// </summary>
+    public interface ICloudQClient
     {
         /// <summary>
         /// Get a list of Authorized Clients

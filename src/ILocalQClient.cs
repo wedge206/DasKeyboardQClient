@@ -4,7 +4,10 @@
     using System.Threading.Tasks;
     using Wedge.DasKeyboardQClient.DataContracts;
 
-    interface ILocalQClient
+    /// <summary>
+    /// ILocalQClient
+    /// </summary>
+    public interface ILocalQClient
     {
 
         /// <summary>
